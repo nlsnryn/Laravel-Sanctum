@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
+use App\Http\Resources\UserTasks;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -52,5 +54,12 @@ class AuthController extends Controller
         return $this->success([
             'message' => 'You have successfully logged out and your token is deleted.'
         ]);
+    }
+
+    public function showTasks($id) {
+
+        $user = User::find($id);
+
+        return new UserTasks($user);
     }
 }

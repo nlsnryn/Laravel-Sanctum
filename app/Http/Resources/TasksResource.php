@@ -28,7 +28,6 @@ class TasksResource extends JsonResource
                 'user name' => $this->user->name,
                 'user email' => $this->user->email,
             ]
-            
         ];
     }
 }

@@ -15,6 +15,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 //register
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/user-tasks/{id}', [AuthController::class, 'showTasks']);
 
 // protected routes
 Route::group(['middleware' => ['auth:sanctum']], function() {
